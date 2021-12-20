@@ -64,3 +64,29 @@ headerLinks.forEach((e) => {
         header.classList.toggle("active__header")
     })
 })
+let lang = document.querySelector(".header__lang");
+lang.addEventListener('click', () => {
+    const animationElement = document.querySelector(".header__logo");
+    animationElement.style.zIndex = 100000;
+    animationElement.style.position = 'absolute';
+    gsap.to(animationElement, {width: innerWidth, height: innerHeight, duration: 1});
+    setTimeout(() => {
+        if (!document.querySelector(".ru")) {
+            document.querySelector("body").style.fontFamily = "Yanone Kaffeesatz"; 
+            for (let key in langArr){
+                document.querySelector("" + key).innerHTML = langArr[key]['ru'];
+            }
+            document.querySelector(".header__lang_circle").classList.add("ru");
+        } else {
+            for (let key in langArr){
+                document.querySelector("" + key).innerHTML = langArr[key]['en'];
+            }
+            document.querySelector("body").style.fontFamily = "Teko";
+            document.querySelector(".header__lang_circle").classList.remove("ru");
+        }
+    }, 1000);
+    setTimeout(() => {
+        gsap.to(animationElement, {width: 300, height: 200, duration: 1});
+    }, 1500)
+    animationElement.style.position = 'relative';
+})
