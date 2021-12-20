@@ -325,7 +325,8 @@ body {
     width: 200px;
     position: relative;
     transition: .3s;
-    border-radius: 50%
+    border-radius: 50%;
+    z-index: 1;
 }
 
 .skills__item:hover {
@@ -347,7 +348,7 @@ body {
 .skills__diagram {
     width: 200px;
     height: 200px;
-    z-index: 1000;
+    z-index: 10;
     position: relative;
     border-radius: 50%;
     transition: .3s
@@ -371,7 +372,8 @@ body {
     font-size: 26px;
     text-align: center;
     transition: .3s;
-    color: #777777
+    color: #777777;
+    z-index: 1;
 }
 
 #active {
