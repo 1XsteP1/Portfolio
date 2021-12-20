@@ -67,6 +67,7 @@ headerLinks.forEach((e) => {
 let lang = document.querySelector(".header__lang");
 lang.addEventListener('click', () => {
     const animationElement = document.querySelector(".header__logo");
+    let width = animationElement.style.width;
     animationElement.style.zIndex = 100000;
     animationElement.style.position = 'absolute';
     gsap.to(animationElement, {width: innerWidth, height: innerHeight, duration: 1});
@@ -86,7 +87,7 @@ lang.addEventListener('click', () => {
         }
     }, 1000);
     setTimeout(() => {
-        gsap.to(animationElement, {width: 300, height: 200, duration: 1});
+        gsap.to(animationElement, {width: width, height: 200, duration: 1});
     }, 1500)
     animationElement.style.position = 'relative';
 })
