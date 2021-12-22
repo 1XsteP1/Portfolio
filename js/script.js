@@ -68,12 +68,9 @@ let lang = document.querySelector(".header__lang");
 lang.addEventListener('click', () => {
     const animationElement = document.querySelector(".header__logo");
     let widthOfElement = animationElement.offsetWidth;
-    animationElement.style.zIndex = 1000;
     animationElement.style.position = 'absolute';
     gsap.to(animationElement, {width: innerWidth, height: innerHeight, duration: 1});
-    setTimeout(() => {
-        document.querySelector(".skills__menu").style.display = 'none';
-    }, 200);
+    document.querySelector(".skills__menu").style.zIndex = -1;
     setTimeout(() => {
         if (!document.querySelector(".ru")) {
             document.querySelector("body").style.fontFamily = "Yanone Kaffeesatz"; 
@@ -91,9 +88,9 @@ lang.addEventListener('click', () => {
     }, 1000);
     setTimeout(() => {
         gsap.to(animationElement, {width: widthOfElement, height: 200, duration: 1});
+        setTimeout(() => {
+            document.querySelector(".skills__menu").style.zIndex = 1;
+        }, 280);
     }, 1500)
-    setTimeout(() => {
-        document.querySelector(".skills__menu").style.display = 'flex';
-    }, 1800);
     animationElement.style.position = 'relative';
 })
