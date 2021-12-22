@@ -90,6 +90,7 @@ body {
     margin-bottom: 4vh;
     vertical-align: middle;
     align-items: center;
+    z-index: 900;
 }
 
 .header__logo_container{
@@ -103,7 +104,8 @@ body {
     text-align: center;
     font-weight: 500;
     text-transform: uppercase;
-    color: #FFFFFf
+    color: #FFFFFf;
+    transition: .3s;
 }
 
 .header__subtitle {
@@ -116,6 +118,7 @@ body {
     top: 50%;
     width: 200px;
     right: 50%;
+    transition: .3s;
     transform: translate(50%, -50%)
 }
 
@@ -312,12 +315,14 @@ body {
 }
 
 .skills__menu {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     column-gap: 50px;
     justify-content: center;
-    row-gap: 50px
+    row-gap: 50px;
+    z-index: 1;
 }
 
 .skills__item {
@@ -410,19 +415,20 @@ body {
 }
 
 .projects__btn {
-    display: block;
-    width: 400px;
-    margin: 0 auto;
-    height: 70px;
-    padding: auto;
+    width: 385px;
+    height: 75px;
+    border: none;
     background: #0D7377;
-    font-size: 40px;
-    color: #fff;
-    text-transform: uppercase;
-    padding: 10px;
+    font-weight: normal;
+    display: block;
+    padding: 5px;
     text-align: center;
-    text-decoration: none;
+    font-size: 48px;
+    line-height: 69px;
+    color: #FFFFFF;
+    margin: 0 auto;
     transition: .3s;
+    text-decoration: none;
     cursor: url("../cursor.svg"), auto
 }
 
