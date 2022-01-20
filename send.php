@@ -1,39 +1,17 @@
 <?php
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Excepton;
+$to = 'azhginartemdeveloper@gmail.com';
 
-    require 'phpmailer/src/Exception.php';
-    require 'phpmailer/src/PHPMailer.php';
+$subject = 'Заказ';
 
-    $mail = new PHPMailer(true);
-    $mail->CharSet = 'UTF-8';
-    $mail->setLanguage('ru', 'phpmailer/language/');
-    $mail->IsHtml(true);
+$message = 'Пользователь' . $_POST['name'] . ' отправил письмо:<br/>'. $_POST['comment'] . '<br/>Связаться с ним можно по этому адресу: ' . $_POST['email'];
 
-    $mail->setFrom('forroyalee2@gmail.com', 'Заказчик');
-    $mail->setAddress('azhginartemdeveloper@gmail.com');
-    $mail->Subject = 'Привет';
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
 
-    $body('<h1>Заказ</h1>');
 
-    $body.='<p>Имя: </p>'.$_POST['name'].'</p>';
-    $body.='<p>Email: '.$_POST['email'].'</p>';
-    if (trim(!empty($_POST['comment']))) {
-        $body.='<p>Комментарий: '.$_POST['comment'].'</p>';
-    } else {
-        $body.='<p>Комментариев нету(</p>';
-    }
+$headers .= 'To: Artem <azhginartemdeveloper@gmail.com>' . "\r\n";
+$headers .= 'From: '  . $_POST['name'] . '<' . $_POST['email'] . '>' . "\r\n";
 
-    $mail->Body = $body;
 
-    if (!$mail.send()) {
-        $message = 'Ошибка';
-    } else {
-        $message = 'Форма отправлена!';
-    }
-
-    $response = ['message' => $message];
-
-    header('Content-type: application/json');
-    echo json_encode($response);
+mail($to, $subject, $message, $headers);
 ?>
