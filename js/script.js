@@ -95,21 +95,23 @@ lang.addEventListener('click', () => {
     animationElement.style.position = 'relative';
 })
 
-$(".contact__form").submit((e) => {
+const form = document.querySelector(".contact__form");
+form.addEventListener('submit', formSend);
+
+async function dormSend(e) {
     e.preventDefault();
 
-    if (!$(this).valid) {
-        return;
-    }
+    let formData = new FormData(form);
 
-    $.ajax({
-        type: "POST",
-        url: "../mailer/smart.php",
-        data: $(this).serialize()
-    }).done(() => {
-        $(this).find("input").val("");
-        
-        $('form').trigger('reset')
+    let response = await fetch('send.php', {
+        method: 'POST',
+        body: formData
     })
-    return false;
-})
+
+    if (response.ok) {
+        let res = await response.json();
+        alert(res.message);
+        formPreview.innerHTML = "";
+        form.reset();
+    }
+}
