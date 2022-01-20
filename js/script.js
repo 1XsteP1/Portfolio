@@ -98,7 +98,7 @@ lang.addEventListener('click', () => {
 const form = document.querySelector(".contact__form");
 form.addEventListener('submit', formSend);
 
-async function dormSend(e) {
+async function formSend(e) {
     e.preventDefault();
 
     let formData = new FormData(form);
