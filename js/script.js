@@ -94,24 +94,3 @@ lang.addEventListener('click', () => {
     }, 1500)
     animationElement.style.position = 'relative';
 })
-
-const form = document.querySelector(".contact__form");
-form.addEventListener('submit', formSend);
-
-async function formSend(e) {
-    e.preventDefault();
-
-    let formData = new FormData(form);
-
-    let response = await fetch('send.php', {
-        method: 'POST',
-        body: formData
-    })
-
-    if (response.ok) {
-        let res = await response.json();
-        alert(res.message);
-        formPreview.innerHTML = "";
-        form.reset();
-    }
-}
