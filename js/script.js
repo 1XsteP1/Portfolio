@@ -94,3 +94,21 @@ lang.addEventListener('click', () => {
     }, 1500)
     animationElement.style.position = 'relative';
 })
+
+$('form').submit(function (e) {
+    e.preventDefault();
+    if (!$(this).valid()) {
+        return;
+    }
+    $.ajax({
+        type: "POST",
+        url: "mailer/mailer/smart.php",
+        data: $(this).serialize()
+    }).done(() => {
+        $(this).find("input").val("");
+
+        $("fomr").trigger('reset');
+    })
+
+    return false;
+}); 
