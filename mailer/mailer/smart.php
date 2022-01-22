@@ -13,8 +13,8 @@ $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;           
 $mail->Username = 'azhginartemdeveloper@gmail.com'; 
 $mail->Password = 'cpzltktoozqetmvw';         
-$mail->SMTPSecure = 'ssl';        
-$mail->Port = 465; 
+$mail->SMTPSecure = 'ssl';   
+$mail->Port = 587; 
  
 $mail->setFrom('forroyalee2@gmail.com', 'Заказчик');
 $mail->addAddress('azhginartemdeveloper@gmail.com');
