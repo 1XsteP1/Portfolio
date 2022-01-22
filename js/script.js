@@ -97,15 +97,13 @@ lang.addEventListener('click', () => {
 
 $('form').submit(function (e) {
     e.preventDefault();
-    if (!$(this).valid()) {
-        return;
-    }
     $.ajax({
         type: "POST",
         url: "mailer/mailer/smart.php",
         data: $(this).serialize()
     }).done(() => {
         $(this).find("input").val("");
+        $(this).find("textarea").val("");
 
         $("fomr").trigger('reset');
     })
